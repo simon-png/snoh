@@ -1,0 +1,15 @@
+# Original export and generated output
+/2026-09-25/
+/_site/
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.codex/
+.agents/

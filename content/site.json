@@ -1,0 +1,56 @@
+{
+  "name": "Simon Coxon",
+  "logo": "assets/images/e27402b3-SNOH-logo.webp",
+  "linkedin": "https://www.linkedin.com/in/simoncoxon/",
+  "medium": "https://medium.com/@snoh",
+  "projects": [
+    {
+      "slug": "ft-paywall-a-big-leap",
+      "title": "A big leap",
+      "cardTitle": "FT \u2014 A big leap",
+      "eyebrow": "FT Paywall",
+      "hero": "assets/images/8430fa17-FT-paywall-header.webp",
+      "thumbnail": "assets/images/fb0a88fb-Homepage---FT.webp",
+      "related": [
+        "nextdoor",
+        "ft-paywall-small-experiments"
+      ]
+    },
+    {
+      "slug": "ft-paywall-small-experiments",
+      "title": "A series of small experiments",
+      "cardTitle": "FT \u2014 Small experiments",
+      "eyebrow": "FT Paywall",
+      "hero": "assets/images/85744dd4-ft-barrier-1.webp",
+      "thumbnail": "assets/images/85744dd4-ft-barrier-1.webp",
+      "related": [
+        "ft-paywall-a-big-leap",
+        "nextdoor"
+      ]
+    },
+    {
+      "slug": "notonthehighstreet",
+      "title": "Enabling inventory management at Notonthehighstreet",
+      "cardTitle": "Stock at Notonthehighstreet",
+      "eyebrow": "Notonthehighstreet",
+      "hero": "assets/images/237c4535-mockup-miz.webp",
+      "thumbnail": "assets/images/038c841a-mockup-miz.webp",
+      "related": [
+        "ft-paywall-small-experiments",
+        "ft-paywall-a-big-leap"
+      ]
+    },
+    {
+      "slug": "nextdoor",
+      "title": "Getting new neighbours for Nextdoor",
+      "cardTitle": "New neighbours for Nextdoor",
+      "eyebrow": "Nextdoor",
+      "hero": "assets/images/73bef893-nextdoorS4.webp",
+      "thumbnail": "assets/images/8d319273-nextdoor-thumb.webp",
+      "related": [
+        "notonthehighstreet",
+        "ft-paywall-small-experiments"
+      ]
+    }
+  ]
+}
