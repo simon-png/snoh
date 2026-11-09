@@ -1,0 +1,163 @@
+# Reading-list link audit — 9 November 2026
+
+Source: https://www.designmethods.co.uk/reading-list
+
+Checked 104 unique URLs with HTTP GET requests, following redirects. HTTP 200 alone does not guarantee the original content remains available. Inspected redirect destinations for unrelated pages. No exhaustive manual review of every video or book page was performed.
+
+Corrected six broken or mismatched destinations, including Made to Stick linking to the wrong book. Removed unavailable entries from the reading-list page at the user’s request; their original titles and URLs remain in this audit. Kept uncertain/blocked links active for manual review. Removed 2 repeated links within the same category.
+
+## Changed destinations
+
+- Made to Stick - Chip Heath & Dan Heath
+  - Previous: https://amzn.to/498VGVX
+  - Current: https://www.penguin.co.uk/books/392922/made-to-stick-by-chip-and-dan-heath/9781407008240
+- A List Apart
+  - Previous: http://alistapart.com/
+  - Current: https://alistapart.com/
+- LukeW
+  - Previous: http://www.lukew.com/
+  - Current: https://www.lukew.com/
+- TeamW Blog
+  - Previous: http://www.blog.theteamw.com/
+  - Current: https://www.blog.theteamw.com/
+- Articles - Baymard Institute - Commerce research articles
+  - Previous: http://baymard.com/blog
+  - Current: https://baymard.com/blog
+- UX Movement
+  - Previous: http://uxmovement.com/
+  - Current: https://uxmovement.com/
+- Psychology Today
+  - Previous: https://www.psychologytoday.com/blog/index
+  - Current: https://www.psychologytoday.com/
+- Collaboration in the User Experience Design Process - Designmodo
+  - Previous: http://designmodo.com/collaboration-user-experience-design-process/
+  - Current: https://designmodo.com/collaboration-user-experience-design-process/
+- A Guide To Heuristic Website Reviews | Sm ashing UX Design
+  - Previous: http://uxdesign.smashingmagazine.com/2011/12/16/guide-heuristic-website-reviews/
+  - Current: https://www.smashingmagazine.com/2011/12/a-guide-to-heuristic-website-reviews/
+- Optimizing UI icons for faster recognition « Boxes and Arrows
+  - Previous: http://boxesandarrows.com/optimizing-ui-icons-for-faster-recognition/
+  - Current: https://boxesandarrows.com/optimizing-ui-icons-for-faster-recognition/
+- How Do Users Really Hold Mobile Devices? :: UXmatters
+  - Previous: http://www.uxmatters.com/mt/archives/2013/02/how-do-users-really-hold-mobile-devices.php
+  - Current: https://www.uxmatters.com/mt/archives/2013/02/how-do-users-really-hold-mobile-devices.php
+- Cognitive Biases - Business Insider
+  - Previous: http://www.businessinsider.com/cognitive-biases-2014-6?op=1
+  - Current: https://www.businessinsider.com/cognitive-biases-2014-6?op=1
+- What UX Methods to Use and When to Use Them: Measuring Usability
+  - Previous: http://www.measuringusability.com/blog/method-when.php
+  - Current: https://measuringu.com/method-when/
+- A No-Fail Process For Writing Landing Page Copy That Converts | Unbounce
+  - Previous: http://unbounce.com/landing-page-copywriting/8-step-process-writing-landing-page-copy-that-converts/
+  - Current: https://unbounce.com/copywriting/8-step-process-writing-landing-page-copy-that-converts/
+- B.F. Skinner | Operant Conditioning | Simply Psychology
+  - Previous: http://www.simplypsychology.org/operant-conditioning.html
+  - Current: https://www.simplypsychology.org/operant-conditioning.html
+- Game reward systems
+  - Previous: http://www.digra.org/wp-content/uploads/digital-library/11310.20247.pdf
+  - Current: https://dl.digra.org/index.php/dl/article/view/594
+- Gestural Interfaces: A Step Backwards In Usability - jnd.org
+  - Previous: http://www.jnd.org/dn.mss/gestural_interfaces_a_step_backwards_in_usability_6.html
+  - Current: https://jnd.org/gestural-interfaces-a-step-backwards-in-usability/
+- Label Placement in Forms :: UXmatters
+  - Previous: http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
+  - Current: https://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
+- Inline Validation in Web Forms · An A List Apart Article
+  - Previous: http://alistapart.com/article/inline-validation-in-web-forms
+  - Current: https://alistapart.com/article/inline-validation-in-web-forms/
+- The Ultimate UX Design of Form Validation - Designmodo
+  - Previous: http://designmodo.com/ux-form-validation/
+  - Current: https://designmodo.com/ux-form-validation/
+- Pttrns — Mobile User Interface Patterns
+  - Previous: http://pttrns.com/
+  - Current: https://www.pttrns.com/
+- UI-Patterns.com
+  - Previous: http://ui-patterns.com/
+  - Current: https://ui-patterns.com/
+- Meaningful Transitions // Home
+  - Previous: http://www.ui-transitions.com/#home
+  - Current: https://ui-transitions.com/
+- David Eagleman: Can we create new senses for humans? | TED Talk | TED.com
+  - Previous: http://www.ted.com/talks/david_eagleman_can_we_create_new_senses_for_humans
+  - Current: https://www.ted.com/talks/david_eagleman_can_we_create_new_senses_for_humans
+- Hugh Herr: The new bionics that let us run, climb and dance | TED Talk | TED.com
+  - Previous: http://www.ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance
+  - Current: https://www.ted.com/talks/hugh_herr_the_new_bionics_that_let_us_run_climb_and_dance
+- Blueprint | Service Design Tools
+  - Previous: http://www.servicedesigntools.org/tools/35
+  - Current: https://servicedesigntools.org/tools/service-blueprint
+
+## Unresolved entries
+
+- UX Planet
+  - URL: https://uxplanet.org/
+  - Needs manual review: 403
+- UX Collective
+  - URL: https://uxdesign.cc/
+  - Needs manual review: 403
+- UX Magazine
+  - URL: http://uxmag.com/
+  - Needs manual review: 403
+- UX Booth | A User Experience Design Publication
+  - URL: http://www.uxbooth.com/
+  - Link disabled: 301
+- 100 User Experience Design & Evaluation Methods for Your Toolkit | Johnny Holland
+  - URL: http://johnnyholland.org/2012/01/100-user-experience-ux-design-and-evaluation-methods-for-your-toolkit/
+  - Link disabled: unrelated redirect
+- 10 techniques for an effective 'call to action' | Boagworld - Web & Digital Advice
+  - URL: http://boagworld.com/design/10-techniques-for-an-effective-call-to-action/
+  - Link disabled: 404
+- Top 5 Ironclad Banner Ad Best Practices | SingleHop
+  - URL: https://www.singlehop.com/blog/top-5-ironclad-banner-ad-best-practices/
+  - Needs manual review: 403
+- Infographic: 5 Tips for a More Successful Call to Action | SingleHop
+  - URL: http://www.singlehop.com/blog/infographic-5-tips-for-a-more-successful-call-to-action/
+  - Needs manual review: 403
+- Creating Mental Models
+  - URL: http://www.chrisdasie.com/myposts/creating-mental-models
+  - Needs manual review: 522
+- Eight best practice tips for writing effective email copy | Econsultancy
+  - URL: https://econsultancy.com/blog/64439-eight-best-practice-tips-for-writing-effective-email-copy#i.ei995n8xfk9znc
+  - Link disabled: unrelated redirect
+- Anatomy of long sales letter - VWO Blog
+  - URL: https://vwo.com/blog/long-sales-letter-copywriting/
+  - Link disabled: unrelated redirect
+- Outdated UX patterns and alternatives
+  - URL: http://sideproject.io/outdated-ux-patterns/
+  - Link disabled: 404
+- Revisiting Proto-Personas for Executive Alignment | UX Magazine
+  - URL: http://uxmag.com/articles/revisiting-proto-personas-for-executive-alignment
+  - Needs manual review: 403
+- Behaviour wizard - BJ Fogg
+  - URL: http://captology.stanford.edu/wp-content/uploads/2010/10/Fogg-and-Hreha-BehaviorWizard.pdf
+  - Link disabled: 000
+- 3 Memory Techniques That Get People To Remember Your Content
+  - URL: http://coschedule.com/blog/memory-techniques/
+  - Link disabled: unrelated redirect
+- Alan Klement: Focus On Causality, Skip Personas
+  - URL: http://alanklement.blogspot.co.uk/2013/03/focus-on-relationships-skip-personas.html
+  - Link disabled: 404
+- How to plan an effective workshop for design ideas
+  - URL: https://medium.com/ft-product-technology/planning-and-running-an-effective-design-ideation-workshop-e0ce0beff10
+  - Needs manual review: 403
+- Tips for Structuring Better Brainstorming Sessions | inspireUX
+  - URL: http://www.inspireux.com/2013/07/18/tips-for-structuring-better-brainstorming-sessions/
+  - Needs manual review: 406
+- So that’s why DOB fields are dropdowns - Seren
+  - URL: http://www.seren.com/blog/so-thats-why-dob-fields-are-dropdowns/
+  - Needs manual review: 000 curl: (28) Failed to connect to www.seren.com port 80 after 8005 ms: Timeout was reached
+- Elements of Design: Web Design Gallery
+  - URL: http://www.smileycat.com/design_elements/
+  - Link disabled: 404
+- PatternTap
+  - URL: http://patterntap.com/
+  - Link disabled: unrelated redirect
+- 17 delightful micro UX effects and transitions for your website | Econsultancy
+  - URL: http://econsultancy.com/blog/63042-17-delightful-micro-ux-effects-and-transitions-for-your-website
+  - Link disabled: unrelated redirect
+- UX Archive
+  - URL: http://uxarchive.com/tasks/purchasing
+  - Needs manual review: 403
+- Mobile Patterns
+  - URL: http://www.mobile-patterns.com/
+  - Needs manual review: 522
