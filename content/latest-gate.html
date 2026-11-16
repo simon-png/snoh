@@ -1,0 +1,13 @@
+<section class="unlock-page wrap">
+<h1>Latest work</h1>
+<p>Please enter the password. If you don't have it, please get in touch.</p>
+<form id="unlock-form">
+<label for="page-password">Password</label>
+<input id="page-password" type="password" autocomplete="current-password" required minlength="2" aria-describedby="unlock-hint unlock-error">
+<p id="unlock-hint">Enter at least 2 characters to enable Unlock.</p>
+<button class="button" type="submit" disabled>Unlock</button>
+<p id="unlock-error" role="status" aria-live="polite"></p>
+</form>
+<noscript>JavaScript is needed to decrypt this page in your browser.</noscript>
+</section>
+<script src="../assets/unlock.js" defer></script>

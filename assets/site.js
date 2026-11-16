@@ -1,3 +1,5 @@
+// Scope initialization so the decrypted document can run this script again.
+(() => {
 // All content remains visible without JavaScript. Enhance galleries progressively.
 document.querySelectorAll('.gallery').forEach(gallery => {
   const slides = [...gallery.querySelectorAll('figure')];
@@ -7,14 +9,30 @@ document.querySelectorAll('.gallery').forEach(gallery => {
   const controls = document.createElement('div');
   controls.className = 'gallery-controls';
   const previous = document.createElement('button');
-  previous.type = 'button'; previous.textContent = '← Previous';
+  previous.type = 'button'; previous.className = 'gallery-previous';
+  previous.setAttribute('aria-label', 'Previous image');
+  previous.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg>';
   const status = document.createElement('span');
+  status.className = 'sr-only';
   status.setAttribute('aria-live', 'polite'); status.setAttribute('aria-atomic', 'true');
   const next = document.createElement('button');
-  next.type = 'button'; next.textContent = 'Next →';
+  next.type = 'button'; next.className = 'gallery-next';
+  next.setAttribute('aria-label', 'Next image');
+  next.innerHTML = '<svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg>';
   const show = index => {
+    const changed = index !== current;
+    const direction = index > current ? 1 : -1;
     current = (index + slides.length) % slides.length;
-    slides.forEach((slide, i) => { slide.hidden = i !== current; });
+    slides.forEach((slide, i) => {
+      slide.getAnimations?.().forEach(animation => animation.cancel());
+      slide.hidden = i !== current;
+    });
+    if (changed && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      slides[current].animate?.([
+        { opacity: 0, transform: `translateX(${direction * 20}px)` },
+        { opacity: 1, transform: 'translateX(0)' }
+      ], { duration: 400, easing: 'ease-out' });
+    }
     status.textContent = `${current + 1} / ${slides.length}`;
   };
   previous.addEventListener('click', () => show(current - 1));
@@ -46,3 +64,47 @@ if (connectDialog && typeof connectDialog.showModal === 'function') {
     connectTrigger?.focus({ preventScroll: true });
   });
 }
+
+// Reveal a persistent return control after roughly one and a half viewports.
+const backTop = document.querySelector('.back-top');
+if (backTop) {
+  backTop.classList.add('back-top-floating');
+  let scrollUpdatePending = false;
+  const updateBackTop = () => {
+    backTop.hidden = window.scrollY < window.innerHeight * 1.5;
+    scrollUpdatePending = false;
+  };
+  const scheduleBackTop = () => {
+    if (!scrollUpdatePending) {
+      scrollUpdatePending = true;
+      window.requestAnimationFrame(updateBackTop);
+    }
+  };
+  window.addEventListener('scroll', scheduleBackTop, { passive: true });
+  window.addEventListener('resize', scheduleBackTop);
+  window.addEventListener('pageshow', scheduleBackTop);
+  backTop.addEventListener('click', event => {
+    event.preventDefault();
+    const target = document.querySelector('.site-header a');
+    target?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  });
+  updateBackTop();
+}
+
+// Animate containers without changing their reserved layout space.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove('image-reveal-pending');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0, rootMargin: `0px 0px -${Math.round(window.innerHeight * 0.30)}px 0px` });
+  document.querySelectorAll('.case-body figure:not(.gallery figure), .case-body .gallery, .project-image').forEach(element => {
+    if (element.getBoundingClientRect().top < window.innerHeight * 0.70 && element.getBoundingClientRect().bottom > 0) return;
+    element.classList.add('image-reveal', 'image-reveal-pending');
+    observer.observe(element);
+  });
+}
+})();

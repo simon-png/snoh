@@ -26,3 +26,11 @@ The intended custom domain is **snoh.co.uk**. Set it in **Settings → Pages →
 Relative asset and page links support both the repository URL and custom domain. The workflow passes the Pages base path into the build for the 404 page. For a manual repository-subpath build use `BASE_PATH=/snoh python3 build.py`; for the custom domain the base path is empty.
 
 Self-hosted Poppins fonts and their licence are in `assets/fonts`. Images, slideshow, case-study section themes, social links and legacy redirects are preserved.
+
+## Protected latest work
+
+`/latest/` serves an unlock form and an AES-256-GCM encrypted document. The key is derived in the browser with PBKDF2-SHA256 (600,000 iterations). The password is not stored in source or browser storage; reloading locks the page again. A strong password is essential because downloaded ciphertext can be attacked offline.
+
+Edit `private/latest.html` locally. This directory is excluded from Git and deployment. Re-encrypt after content or shared-layout changes by running `python3 scripts/encrypt_latest.py` and entering the password twice, then run `python3 build.py`. Encryption requires the Python cryptography package locally; the normal GitHub Actions build needs only the pre-encrypted `content/latest.encrypted.json` and standard Python.
+
+Never add plaintext drafts or private images to the public repository. The encryption script currently rejects media/script embeds for review: sensitive images must be embedded into the encrypted content, not served as public assets. Keep a private backup of the editable source. Search-exclusion tags remain, but encryption provides the access barrier. Rotate the password by re-encrypting; old downloaded ciphertext cannot be revoked.

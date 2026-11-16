@@ -13,3 +13,8 @@ __pycache__/
 *.py[cod]
 .codex/
 .agents/
+
+# Unencrypted work in progress — never publish
+/private/
+/content/latest.html
+/content/tm.html
