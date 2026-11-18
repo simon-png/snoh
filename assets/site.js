@@ -101,10 +101,25 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       observer.unobserve(entry.target);
     });
   }, { threshold: 0, rootMargin: `0px 0px -${Math.round(window.innerHeight * 0.30)}px 0px` });
-  document.querySelectorAll('.case-body figure:not(.gallery figure), .case-body .gallery, .project-image').forEach(element => {
+  document.querySelectorAll('.case-body figure:not(.gallery figure):not(.embedded-deck-figure), .case-body .gallery, .project-image').forEach(element => {
     if (element.getBoundingClientRect().top < window.innerHeight * 0.70 && element.getBoundingClientRect().bottom > 0) return;
     element.classList.add('image-reveal', 'image-reveal-pending');
     observer.observe(element);
+  });
+}
+// The encrypted presentations report their stacked heights from isolated frames.
+const embeddedDecks = [...document.querySelectorAll('iframe[data-resize-deck]')];
+if (embeddedDecks.length) {
+  window.addEventListener('message', event => {
+    const frame = embeddedDecks.find(deck => event.source === deck.contentWindow);
+    if (!frame || event.data?.type !== 'embedded-deck-height') return;
+    const height = Number(event.data.height);
+    if (Number.isFinite(height) && height > 0 && height < 50000) frame.style.height = `${Math.ceil(height)}px`;
+  });
+  embeddedDecks.forEach(frame => {
+    new ResizeObserver(() => {
+      if (frame.getBoundingClientRect().width >= 760) frame.style.height = '';
+    }).observe(frame);
   });
 }
 })();
