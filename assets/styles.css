@@ -55,6 +55,8 @@ html.connect-open{overflow:hidden}
 .tm-hero{background:var(--bg);border-bottom:1px solid var(--line)}
 
 .tm-hero .hero-placeholder{position:absolute;inset:0;background:#4a3f39;z-index:-2}
+.tm-case-body .work-in-progress-callout{width:fit-content;padding:10px 16px;border-radius:4px;background:var(--accent);color:#342c28;font-size:18px;font-weight:600;line-height:1.4;margin-bottom:28px}
+.tm-case-body .deck-description{font-size:15px;font-style:italic;line-height:1.5;text-align:center;margin-top:-20px}
 .tm-case-body .img-placeholder{display:flex;align-items:center;justify-content:center;text-align:center;aspect-ratio:16/9;width:100%;padding:2rem;border:2px dashed currentColor;font-size:.95rem;overflow-wrap:anywhere}
 .tm-case-body .info-strip{display:flex;flex-wrap:wrap;gap:16px 40px;font-size:16px;margin-bottom:32px}
 .tm-case-body .info-strip strong{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
@@ -62,7 +64,6 @@ html.connect-open{overflow:hidden}
 .tm-case-body details.dive summary{cursor:pointer;font-weight:600}
 .tm-case-body details.dive summary:focus-visible{outline:3px solid var(--section-link);outline-offset:6px}
 .tm-case-body details.dive ul{margin-top:16px;margin-bottom:0}
-.tm-case-body .todo{background:#ffe58a;color:#342c28;padding:0 .3em;border-radius:3px;font-size:.85em}
 @media(max-width:767px){.tm-case-body .img-placeholder{padding:24px 16px;aspect-ratio:auto;min-height:180px}.tm-case-body .info-strip{font-size:14px;gap:16px 24px}.tm-case-body details.dive{padding:16px}}
 
 /* Persistent return control, progressively enhanced from the footer link. */
