@@ -108,6 +108,18 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
   });
 }
 // The encrypted presentations report their stacked heights from isolated frames.
+document.querySelectorAll('.board-activation-needed').forEach(figure => {
+  const frame = figure.querySelector('iframe');
+  const activation = figure.querySelector('.board-activation');
+  activation?.addEventListener('click', () => {
+    frame.removeAttribute('aria-hidden');
+    frame.removeAttribute('tabindex');
+    figure.classList.remove('board-activation-needed');
+    activation.remove();
+    frame.focus({ preventScroll: true });
+  });
+});
+
 const embeddedDecks = [...document.querySelectorAll('iframe[data-resize-deck]')];
 if (embeddedDecks.length) {
   window.addEventListener('message', event => {

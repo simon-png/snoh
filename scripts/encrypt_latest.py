@@ -17,7 +17,7 @@ def embed_private_image(body, source_file, placeholder, alt, width, height):
         raise ValueError('Could not find the ' + source_file + ' placeholder exactly once')
     return body.replace(placeholder, figure)
 
-def embed_presentation(body, source_file, placeholder, frame_id, title, resize_on_mobile=True):
+def embed_presentation(body, source_file, placeholder, frame_id, title, resize_on_mobile=True, activate_on_click=False):
     presentation = (build.ROOT / 'private' / source_file).read_text()
     # The source lives outside Git. Each sandboxed frame has an opaque origin.
     presentation = presentation.replace('  if (location.hash !== h) history.replaceState(null, "", h);', '')
@@ -34,7 +34,11 @@ window.addEventListener('resize', reportHeight);
     if resize_on_mobile:
         presentation = presentation.replace('</body>', resize_script + '</body>')
     resize_attribute = ' data-resize-deck' if resize_on_mobile else ''
-    frame = '<figure class="embedded-deck-figure"><iframe id="' + frame_id + '"' + resize_attribute + ' title="' + html.escape(title, quote=True) + '" sandbox="allow-scripts" loading="lazy" srcdoc="' + html.escape(presentation, quote=True) + '"></iframe></figure>'
+    figure_class = 'embedded-deck-figure board-activation-needed' if activate_on_click else 'embedded-deck-figure'
+    inactive_attributes = ' aria-hidden="true" tabindex="-1"' if activate_on_click else ''
+    activation_button = ('<button class="board-activation" type="button"><span>Click to explore board</span></button>'
+                         if activate_on_click else '')
+    frame = '<figure class="' + figure_class + '"><iframe id="' + frame_id + '"' + resize_attribute + inactive_attributes + ' title="' + html.escape(title, quote=True) + '" sandbox="allow-scripts" loading="lazy" srcdoc="' + html.escape(presentation, quote=True) + '"></iframe>' + activation_button + '</figure>'
     if body.count(placeholder) != 1:
         raise ValueError('Could not find the ' + title + ' placeholder exactly once')
     return body.replace(placeholder, frame)
@@ -52,6 +56,10 @@ def encrypt(password):
                                '<figure><div class="img-placeholder">Image: The old upsells interface (blurred) or a diagram of the one-event-per-shirt-size workaround</div></figure>',
                                'Diagram showing three upsells created as separate events for each game in a ten-game season',
                                1918, 1068)
+    body = embed_private_image(body, 'notebook-lm.png',
+                               '<figure><div class="img-placeholder">Image: The NotebookLM notebook and its sources (blurred)</div></figure>',
+                               'NotebookLM notebook showing research sources and cited user needs for offers management',
+                               1546, 1136)
     body = embed_presentation(body, 'north-star.html',
                               '<figure><div class="img-placeholder">Image: Grid of the ten principle titles</div></figure>',
                               'north-star-frame', 'Future Upsells - North Star Principles')
@@ -65,13 +73,17 @@ def encrypt(password):
     body = embed_presentation(body, 'miro-ia.html',
                               '<figure><div class="img-placeholder">Image: The Miro IA, redrawn</div></figure>',
                               'miro-ia-frame', 'Target experience information architecture diagram',
-                              resize_on_mobile=False)
+                              resize_on_mobile=False, activate_on_click=True)
     body = embed_presentation(body, 'ditto.html',
                               '<figure><div class="img-placeholder">Image: Before / after — 2–3 hours vs under 20 minutes</div></figure>',
                               'ditto-frame', 'How Ditto Works diagram')
     body = embed_presentation(body, 'ai-native-design-delivery.html',
                               '<!-- AI-Native Design to Delivery diagram -->',
                               'ai-native-design-delivery-frame', 'AI-Native Design to Delivery diagram',
+                              resize_on_mobile=False)
+    body = embed_presentation(body, 'discovery-effort-risk.html',
+                              '<!-- Discovery Effort to Risk diagram -->',
+                              'discovery-effort-risk-frame', 'Discovery Effort to Risk diagram',
                               resize_on_mobile=False)
     page = build.layout('Upselling the future', body, root='../', latest=True, noindex=True,
                         description='Protected work in progress.')
